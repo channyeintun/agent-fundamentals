@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Fundamentals - Course Digitized</title>
+    <!-- Use Inter as a close substitute for Google Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Google Color Palette */
+            --google-blue: #4285F4;
+            --google-red: #EA4335;
+            --google-yellow: #FBBC05;
+            --google-green: #34A853;
+            --google-blue-light: #E8F0FE;
+            --google-red-light: #FCE8E6;
+            --google-yellow-light: #FEF7E0;
+            --google-green-light: #E6F4EA;
+            
+            --text-main: #3C4043;
+            --text-heading: #202124;
+            --bg-page: #FFFFFF;
+            --bg-app: #F1F3F4;
+            
+            --font-family: 'Inter', sans-serif;
+            --page-width: 1000px;
+            --page-height: 1414px; /* A4-ish ratio but for screen */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-app);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+        }
+
+        /* Each Page Container */
+        .page {
+            background: var(--bg-page);
+            width: var(--page-width);
+            min-height: var(--page-height);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+            padding: 80px 100px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            margin-bottom: 20px;
+            page-break-after: always;
+        }
+
+        /* Google Skills Logo Header (Common) */
+        .page-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        .google-logo {
+            font-weight: 600;
+            font-size: 32px;
+            letter-spacing: -0.5px;
+        }
+        .google-logo span:nth-child(1) { color: #4285F4; } /* G */
+        .google-logo span:nth-child(2) { color: #EA4335; } /* o */
+        .google-logo span:nth-child(3) { color: #FBBC05; } /* o */
+        .google-logo span:nth-child(4) { color: #4285F4; } /* g */
+        .google-logo span:nth-child(5) { color: #34A853; } /* l */
+        .google-logo span:nth-child(6) { color: #EA4335; } /* e */
+        .skills-text {
+            font-size: 32px;
+            color: #5F6368;
+            margin-left: 12px;
+            font-weight: 500;
+        }
+
+        /* Large Header with Pill Accents */
+        .main-title {
+            font-size: 100px; 
+            font-weight: 700;
+            color: var(--text-heading);
+            line-height: 1.1;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .pill-blue { background-color: var(--google-blue); color: white; padding: 10px 40px; border-radius: 100px; display: inline-block; }
+        .pill-red { background-color: var(--google-red); color: white; padding: 10px 40px; border-radius: 100px; display: inline-block; }
+        .pill-yellow { background-color: var(--google-yellow); color: var(--text-heading); padding: 10px 40px; border-radius: 100px; display: inline-block; }
+
+        /* Column Layout */
+        .content-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 50px; }
+        h3 { font-size: 28px; font-weight: 600; margin-bottom: 20px; color: var(--text-heading); }
+        p { font-size: 20px; margin-bottom: 24px; color: var(--text-main); }
+
+        /* Footer */
+        .page-footer {
+            margin-top: auto;
+            border-top: 1px solid #E8EAED;
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #5F6368;
+            font-size: 18px;
+        }
+
+        /* Tables & Boxes */
+        .comparison-table { width: 100%; border-collapse: separate; border-spacing: 0 15px; }
+        .comparison-table th { padding: 20px; text-align: left; font-size: 20px; background: #e8f0fe; font-weight: 600; }
+        .comparison-table td { padding: 25px; border-bottom: 1px solid #f1f3f4; }
+        .resource-box { border: 2px solid #f1f3f4; border-radius: 20px; padding: 30px; margin-bottom: 30px; }
+
+        @media print { body { background: white; padding: 0; } .page { border-radius: 0; box-shadow: none; page-break-after: always; } }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: Module 1 Problem -->
+    <div class="page" id="page-1">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h1 class="main-title">The problem:<br><span class="pill-blue">The evolution</span><br>that led us here</h1>
+        <div class="content-cols">
+            <div class="intro-col">
+                <h3 style="font-weight: 700; margin-bottom: 20px;">Introduction</h3>
+                <p>Think about the last time you asked Gemini or any other AI to do something for you. Maybe you asked it to help plan a trip, manage your calendar, or analyze some data. It probably gave you great advice, like detailed steps, helpful suggestions, or even some sample code. But then you still had to do all the actual work yourself.</p>
+                <p>This gap between knowing and doing represents the next significant step in the evolution of AI. While we have incredibly intelligent systems capable of advising us on a vast array of tasks, the final execution still rests on our shoulders. It’s akin to having a world-class advisor who can’t pick up the phone, send an email, or press a button on your behalf.</p>
+                <h3 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 20px;">Let's trace how we got here and each step’s limitations.</h3>
+                <p><strong>First, we had LLM APIs.</strong> These were revolutionary. Suddenly we could have conversations with AI, ask questions, and generate content. But try asking an LLM to check your email or book a flight. It can’t. The LLM is frozen in time and disconnected from the world. It can process information but can’t interact with external systems.</p>
+            </div>
+            <div class="intro-col">
+                <p><strong>Then came LLMs with function calling.</strong> This seemed like the answer! Now the model could call functions, interact with APIs, and even update databases. But here's the catch: you still had to orchestrate everything. Every function call needed your explicit instruction. Want to book a complete trip? You'd need to manually coordinate dozens of function calls: search flights, check availability, compare prices, book flights, find hotels, book hotels, and arrange transportation. The model became a better assistant, but you were still the one doing all the thinking and planning.</p>
+                <p style="margin-top: 30px;">Here’s what this looks like in practice:<br>Imagine asking “book me a trip to Paris next week.”</p>
+                <p>With an LLM, you get advice: “Here’s how to book a trip to Paris…” With function calling, you get capability but not autonomy: “I can search for flights if you tell me the exact dates, then I can search for hotels if you tell me the area, then I can…” and so on.</p>
+                <p><strong>What you really want is:</strong> “I’ve found three flight options that work with your calendar, matched them with nearby hotels in your budget, and I’m ready to book the combination that works best. Should I proceed?”</p>
+                <p><strong>That’s the promise of agents.</strong></p>
+            </div>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">1</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 2: Module 1 Problem (Diagram) -->
+    <div class="page" id="page-2">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h2 style="font-size: 48px; margin-bottom: 60px;">The evolution from LLMs to Agents</h2>
+        
+        <div style="display: flex; gap: 0; align-items: stretch; margin-top: 50px; position: relative; padding: 0 40px; min-height: 500px; width: 100%;">
+            
+            <!-- Global Connection Line -->
+            <div style="position: absolute; top: 382px; left: 140px; right: 140px; height: 3px; background: #4285F4; z-index: 1;"></div>
+
+            <!-- Stage 1 Container -->
+            <div style="background: #F8F9FA; border-radius: 24px; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; flex: 1; position: relative; z-index: 2; margin: 0 10px;">
+                <div style="font-weight: 600; margin-bottom: 30px; font-size: 18px;">Stage 1</div>
+                <div style="border: 2px dashed #BCC1C6; border-radius: 20px; padding: 25px 15px; text-align: center; margin-bottom: 60px; background: white; width: 100%; min-height: 100px; display: flex; flex-direction: column; justify-content: center;">
+                    <div style="color: #5F6368; font-size: 14px; margin-bottom: 5px;">Capability</div>
+                    <div style="font-weight: 700;">Text only</div>
+                </div>
+                <div style="background: #FCE8E6; color: #202124; border-radius: 16px; padding: 25px 15px; text-align: center; font-weight: 700; width: 100%; position: relative; border: 1.5px solid #FAD2CF;">
+                    <div style="color: #5F6368; font-size: 14px; margin-bottom: 5px; font-weight: 400;">Technology</div>
+                    LLM API
+                    <!-- Connection Dot Right -->
+                    <div style="position: absolute; right: -5px; top: 50%; transform: translateY(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%; z-index: 10;"></div>
+                </div>
+            </div>
+
+            <!-- Connector 1 Spacer -->
+            <div style="width: 120px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 102px; position: relative; z-index: 2;">
+                <!-- Pill -->
+                <div style="background: #F1F3F4; padding: 6px 15px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #DADCE0; white-space: nowrap; z-index: 11;">+ Functions</div>
+            </div>
+
+            <!-- Stage 2 Container -->
+            <div style="background: #F8F9FA; border-radius: 24px; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; flex: 1.2; position: relative; z-index: 2; margin: 0 10px;">
+                <div style="font-weight: 600; margin-bottom: 30px; font-size: 18px;">Stage 2</div>
+                <div style="border: 2px dashed #BCC1C6; border-radius: 20px; padding: 25px 15px; text-align: center; margin-bottom: 60px; background: white; width: 100%; min-height: 100px; display: flex; flex-direction: column; justify-content: center;">
+                    <div style="color: #5F6368; font-size: 14px; margin-bottom: 5px;">Capability</div>
+                    <div style="font-weight: 700;">Can use tools</div>
+                </div>
+                <div style="background: #FEF7E0; color: #202124; border-radius: 16px; padding: 25px 15px; text-align: center; font-weight: 700; width: 100%; position: relative; border: 1.5px solid #FEEFC3;">
+                    <div style="color: #5F6368; font-size: 14px; margin-bottom: 5px; font-weight: 400;">Technology</div>
+                    LLM + Function Calling
+                    <!-- Connection Dot Left -->
+                    <div style="position: absolute; left: -5px; top: 50%; transform: translateY(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%; z-index: 10;"></div>
+                    <!-- Connection Dot Right -->
+                    <div style="position: absolute; right: -5px; top: 50%; transform: translateY(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%; z-index: 10;"></div>
+                </div>
+            </div>
+
+            <!-- Connector 2 Spacer -->
+            <div style="width: 120px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 102px; position: relative; z-index: 2;">
+                <!-- Pill -->
+                <div style="background: #F1F3F4; padding: 6px 15px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #DADCE0; white-space: nowrap; z-index: 11;">+ Autonomy</div>
+            </div>
+
+            <!-- Stage 3 Container -->
+            <div style="background: #F8F9FA; border-radius: 24px; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; flex: 1; position: relative; z-index: 2; margin: 0 10px;">
+                <div style="font-weight: 600; margin-bottom: 30px; font-size: 18px;">Stage 3</div>
+                <div style="border: 2px dashed #BCC1C6; border-radius: 20px; padding: 25px 15px; text-align: center; margin-bottom: 60px; background: white; width: 100%; min-height: 100px; display: flex; flex-direction: column; justify-content: center;">
+                    <div style="color: #5F6368; font-size: 14px; margin-bottom: 5px;">Capability</div>
+                    <div style="font-weight: 700;">Pursues Goals</div>
+                </div>
+                <div style="background: #E6F4EA; color: #202124; border-radius: 16px; padding: 25px 15px; text-align: center; font-weight: 700; width: 100%; position: relative; border: 1.5px solid #CEEAD6;">
+                    <div style="color: #5F6368; font-size: 14px; margin-bottom: 5px; font-weight: 400;">Technology</div>
+                    AI Agent
+                    <!-- Connection Dot Left -->
+                    <div style="position: absolute; left: -5px; top: 50%; transform: translateY(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%; z-index: 10;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <p style="margin-top: 60px; color: #5F6368; font-size: 18px; text-align: center;">Figure: The evolution from LLMs to Agents — each step adds critical capabilities.</p>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">2</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 3: Module 1 Solution (Intro) -->
+    <div class="page" id="page-3">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h1 class="main-title">The solution:<br><span class="pill-blue">Agent abstraction</span></h1>
+        <div style="max-width: 800px;">
+            <h2 style="font-size: 36px; margin-bottom: 30px;">Why agents are different</h2>
+            <p style="font-size: 22px; margin-bottom: 30px;">An agent isn’t just an LLM with tools bolted on. It’s a fundamentally different abstraction; a system that can pursue goals autonomously. Instead of responding to each request in isolation, an agent maintains context, plans ahead, and takes initiative to achieve objectives.</p>
+            <p style="font-size: 20px; color: #5f6368; line-height: 1.5; font-style: italic;">According to Google's agent whitepaper, in its most fundamental form:</p>
+            <p style="font-size: 24px; color: #202124; line-height: 1.5; margin-top: 20px; border-left: 5px solid var(--google-blue); padding-left: 30px;">“A generative AI agent can be defined as an application that attempts to achieve a goal by observing the world and acting upon it using the tools that it has at its disposal. Agents are autonomous and can act independently of human intervention, especially when provided with proper goals or objectives they are meant to achieve. Agents can also be proactive in their approach to reaching their goals.”</p>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">3</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 4: Module 1 Solution (5 Characteristics) -->
+    <div class="page" id="page-4">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h2 style="font-size: 42px; margin-bottom: 30px;">Five essential characteristics</h2>
+        <p style="margin-bottom: 40px; font-size: 18px; color: #5F6368;">Not everything that uses an LLM and tools is an agent. Breaking down this definition, true agents are characterized by five essential capabilities:</p>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
+            <div style="display: flex; gap: 20px; padding: 15px 25px; background: #f8f9fa; border-radius: 20px; border-left: 5px solid var(--google-blue);">
+                <div style="background: var(--google-blue); color: white; min-width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">1</div>
+                <div><h3 style="font-size: 22px; margin-bottom: 5px;">Goal-directed behavior</h3><p style="font-size: 16px; color: #5f6368; margin-bottom: 0;">Agents work toward objectives, not just respond to queries. They understand the difference between the current state and the desired state, and they take actions to bridge that gap.</p></div>
+            </div>
+            <div style="display: flex; gap: 20px; padding: 15px 25px; background: #f8f9fa; border-radius: 20px; border-left: 5px solid var(--google-red);">
+                <div style="background: var(--google-red); color: white; min-width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">2</div>
+                <div><h3 style="font-size: 22px; margin-bottom: 5px;">Autonomous operation</h3><p style="font-size: 16px; color: #5f6368; margin-bottom: 0;">Agents can act independently of human intervention. Once given a goal, they determine the steps needed without requiring explicit instruction for each action.</p></div>
+            </div>
+            <div style="display: flex; gap: 20px; padding: 15px 25px; background: #f8f9fa; border-radius: 20px; border-left: 5px solid var(--google-yellow);">
+                <div style="background: var(--google-yellow); color: white; min-width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">3</div>
+                <div><h3 style="font-size: 22px; margin-bottom: 5px;">Proactive initiative</h3><p style="font-size: 16px; color: #5f6368; margin-bottom: 0;">Agents don’t just respond—they actively work toward goals. Even in the absence of explicit instruction sets, an agent can reason about what it should do next to achieve its ultimate goal.</p></div>
+            </div>
+            <div style="display: flex; gap: 20px; padding: 15px 25px; background: #f8f9fa; border-radius: 20px; border-left: 5px solid var(--google-green);">
+                <div style="background: var(--google-green); color: white; min-width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">4</div>
+                <div><h3 style="font-size: 22px; margin-bottom: 5px;">Environmental awareness</h3><p style="font-size: 16px; color: #5f6368; margin-bottom: 0;">Agents observe and perceive their environment through various inputs like user requests, API responses, database states, and error messages. They build a model of the world and update it as they work.</p></div>
+            </div>
+            <div style="display: flex; gap: 20px; padding: 15px 25px; background: #f8f9fa; border-radius: 20px; border-left: 5px solid #BDC1C6;">
+                <div style="background: #BDC1C6; color: white; min-width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">5</div>
+                <div><h3 style="font-size: 22px; margin-bottom: 5px;">Tool use</h3><p style="font-size: 16px; color: #5f6368; margin-bottom: 0;">Agents interact with the outside world using the tools at their disposal. This might include APIs, databases, external services, or other systems, enabling them to go beyond just generating text to actually performing actions.</p></div>
+            </div>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">4</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 5: Module 1 Solution (Chat Examples) -->
+    <div class="page" id="page-5">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h2 style="font-size: 38px; margin-bottom: 30px;">Seeing these characteristics at work</h2>
+        <p style="font-size: 18px; color: #5F6368; margin-bottom: 40px;">Let’s see how these characteristics manifest with a simple example: checking the weather and deciding what to wear.</p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <!-- LLM Only -->
+            <div style="background: #f8f9fa; border-radius: 20px; padding: 25px; border: 1px solid #DADCE0;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 20px;"><span style="font-weight: 700; color: #5F6368;">With an LLM</span><span style="color: #EA4335; font-size: 12px; font-weight: 700;">No tool use / No environmental awareness</span></div>
+                <div style="background: white; border-radius: 12px; padding: 15px; margin-bottom: 15px; border: 1px solid #E8EAED;"><p style="font-size: 14px; margin-bottom: 0;"><strong>You:</strong> "Should I wear a jacket today?"</p></div>
+                <div style="background: white; border-radius: 12px; padding: 15px; border: 1px solid #E8EAED; position: relative;">
+                    <div style="position: absolute; left: -10px; top: 10px; width: 20px; height: 20px; background: white; transform: rotate(45deg); border-left: 1px solid #E8EAED; border-bottom: 1px solid #E8EAED;"></div>
+                    <p style="font-size: 14px; margin-bottom: 0;"><strong>LLM:</strong> "I don't have access to current weather data, but generally you should wear a jacket if it's below 60°F or raining."</p>
+                </div>
+                <p style="font-size: 14px; color: #5F6368; margin-top: 20px; font-style: italic;">The LLM has knowledge but no connection to reality.</p>
+            </div>
+
+            <!-- LLM + Function Calling -->
+            <div style="background: #f8f9fa; border-radius: 20px; padding: 25px; border: 1px solid #DADCE0;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 20px;"><span style="font-weight: 700; color: #5F6368;">With LLM + function calling</span><span style="color: #FBBC05; font-size: 12px; font-weight: 700;">Tool use / Not autonomous</span></div>
+                <div style="background: white; border-radius: 12px; padding: 15px; margin-bottom: 10px; border: 1px solid #E8EAED;"><p style="font-size: 14px; margin-bottom: 0;"><strong>You:</strong> "Check the weather for Seattle"</p></div>
+                <div style="background: #E8F0FE; border-radius: 12px; padding: 10px; margin-bottom: 10px; font-family: monospace; font-size: 12px;">[Calls weather API] → "55°F and cloudy"</div>
+                <div style="background: white; border-radius: 12px; padding: 15px; margin-bottom: 10px; border: 1px solid #E8EAED;"><p style="font-size: 14px; margin-bottom: 0;"><strong>You:</strong> "Should I wear a jacket?"</p></div>
+                <div style="background: white; border-radius: 12px; padding: 15px; border: 1px solid #E8EAED;"><p style="font-size: 14px; margin-bottom: 0;"><strong>LLM:</strong> "Yes, at 55°F you should wear a jacket."</p></div>
+                <p style="font-size: 14px; color: #5F6368; margin-top: 10px; font-style: italic;">Better—it can use tools, but you're managing the conversation flow.</p>
+            </div>
+        </div>
+
+        <!-- Agent -->
+        <div style="background: #E6F4EA; border-radius: 20px; padding: 30px; border: 2px solid var(--google-green); margin-top: 30px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;"><span style="font-weight: 700; color: var(--google-green); font-size: 20px;">With an AI Agent</span><span style="color: var(--google-green); font-weight: 700;">All 5 characteristics in action</span></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                <div>
+                    <div style="background: white; border-radius: 12px; padding: 15px; border: 1px solid #CEEAD6;"><p style="font-size: 16px; margin-bottom: 0;"><strong>You:</strong> "Should I wear a jacket today?"</p></div>
+                    <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+                        <div style="background: #CEEAD6; border-radius: 8px; padding: 8px 15px; font-size: 13px;">[Checks your location]</div>
+                        <div style="background: #CEEAD6; border-radius: 8px; padding: 8px 15px; font-size: 13px;">[Queries weather API]</div>
+                        <div style="background: #CEEAD6; border-radius: 8px; padding: 8px 15px; font-size: 13px;">[Checks your calendar for outdoor activities]</div>
+                        <div style="background: #CEEAD6; border-radius: 8px; padding: 8px 15px; font-size: 13px;">[Considers the forecast for when you'll be outside]</div>
+                    </div>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 25px; border: 2px solid var(--google-green); display: flex; align-items: center;">
+                    <p style="font-size: 18px; font-weight: 500; margin-bottom: 0;"><strong>Agent:</strong> "Yes, definitely wear a jacket. It's 55°F now, but it will drop to 48°F by 6 PM when you have your outdoor meeting."</p>
+                </div>
+            </div>
+            <p style="font-size: 16px; color: #167B32; margin-top: 20px; font-style: italic; text-align: center;">The agent autonomously gathered context and provided a complete answer.</p>
+        </div>
+
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">5</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 6: Module 1 Solution (Comparison Table) -->
+    <div class="page" id="page-6">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h2 style="font-size: 38px; margin-bottom: 30px;">Core concepts: Comparing the three approaches</h2>
+        <p style="font-size: 18px; color: #5F6368; margin-bottom: 40px;">Let’s visualize how the same request gets handled differently across LLMs, function calling, and agents:</p>
+        
+        <div style="background: #F8F9FA; border-radius: 30px; padding: 80px 40px; margin-bottom: 40px; border: 1px solid #E8EAED; position: relative;">
+             <!-- Header Box -->
+             <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 0; position: relative; z-index: 2;">
+                 <div style="background: #4285F4; color: white; padding: 15px 40px; border-radius: 12px; font-weight: 700; font-size: 24px; position: relative;">
+                     Book a trip to Paris
+                     <!-- Start dot (just below pill) -->
+                     <div style="position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%;"></div>
+                 </div>
+                 
+                 <!-- Vertical stem directly below pill -->
+                 <div style="width: 3px; height: 40px; background: #4285F4; position: relative; margin-top: 10px;">
+                     <!-- Intersection dot (bottom of stem) -->
+                     <div style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%;"></div>
+                 </div>
+
+                 <!-- Forking Horizontal Bar with rounded corners at ends -->
+                 <div style="width: 100%; max-width: 680px; height: 30px; border: 3px solid #4285F4; border-bottom: none; border-top-left-radius: 24px; border-top-right-radius: 24px; position: relative; margin-top: 0;">
+                    <!-- Middle connection down -->
+                    <div style="position: absolute; left: 50%; top: 0; width: 3px; height: 30px; background: #4285F4; transform: translateX(-50%);"></div>
+                 </div>
+             </div>
+
+             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; position: relative; margin-top: -30px; z-index: 1; max-width: 850px; margin-left: auto; margin-right: auto;">
+                 
+                 <!-- LLM -->
+                 <div style="display: flex; flex-direction: column; align-items: center;">
+                     <!-- Vertical connect from fork to box -->
+                     <div style="width: 3px; height: 30px; background: #4285F4; position: relative;">
+                         <div style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%; z-index: 5;"></div>
+                     </div>
+                     <div style="background: #FAD2CF; border-radius: 20px; padding: 15px 30px; text-align: center; font-weight: 700; width: 100%; border: 1.5px solid #F8BBD0; position: relative;">
+                         LLM Response
+                         <!-- Connection down to white card -->
+                         <div style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%; z-index: 5;"></div>
+                         <div style="position: absolute; bottom: -45px; left: 50%; width: 3px; height: 40px; background: #4285F4;"></div>
+                     </div>
+                     <div style="background: white; border-radius: 16px; padding: 25px; font-size: 15px; border: 1.5px solid #DADCE0; width: 100%; margin-top: 40px; position: relative;">
+                         <!-- Connection dot at top of white card -->
+                         <div style="position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%; z-index: 5;"></div>
+                         <p style="color: #3C4043; margin-bottom: 15px;"><strong>Advice Only:</strong></p>
+                         <p style="margin-bottom: 8px;">How to book flights...</p>
+                         <p style="margin-bottom: 8px;">Step 1: Go to website...</p>
+                         <p style="margin-bottom: 0;">Step 2: Search dates...</p>
+                     </div>
+                 </div>
+
+                 <!-- Function Calling -->
+                 <div style="display: flex; flex-direction: column; align-items: center;">
+                     <!-- Vertical connect from fork to box -->
+                     <div style="width: 3px; height: 30px; background: #4285F4; position: relative;">
+                         <div style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%; z-index: 5;"></div>
+                     </div>
+                     <div style="background: #FEEFC3; border-radius: 20px; padding: 15px 30px; text-align: center; font-weight: 700; width: 100%; border: 1.5px solid #FFE082; position: relative;">
+                         Function Calling
+                         <!-- Connection down to white card -->
+                         <div style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%; z-index: 5;"></div>
+                         <div style="position: absolute; bottom: -45px; left: 50%; width: 3px; height: 40px; background: #4285F4;"></div>
+                     </div>
+                     <div style="background: white; border-radius: 16px; padding: 25px; font-size: 15px; border: 1.5px solid #DADCE0; width: 100%; margin-top: 40px; position: relative;">
+                         <!-- Connection dot at top of white card -->
+                         <div style="position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%; z-index: 5;"></div>
+                         <p style="color: #3C4043; margin-bottom: 15px;"><strong>Needs Direction:</strong></p>
+                         <p style="margin-bottom: 8px;">I can search flights</p>
+                         <p style="margin-bottom: 8px;">What dates?</p>
+                         <p style="margin-bottom: 0;">What airline?</p>
+                     </div>
+                 </div>
+
+                 <!-- Agent -->
+                 <div style="display: flex; flex-direction: column; align-items: center;">
+                     <!-- Vertical connect from fork to box -->
+                     <div style="width: 3px; height: 30px; background: #4285F4; position: relative;">
+                         <div style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%; z-index: 5;"></div>
+                     </div>
+                     <div style="background: #CEEAD6; border-radius: 20px; padding: 15px 30px; text-align: center; font-weight: 700; width: 100%; border: 1.5px solid #A5D6A7; position: relative;">
+                         Agent Response
+                         <!-- Connection down to white card -->
+                         <div style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%; z-index: 5;"></div>
+                         <div style="position: absolute; bottom: -45px; left: 50%; width: 3px; height: 400px; background: #4285F4; max-height: 40px;"></div>
+                     </div>
+                     <div style="background: white; border-radius: 16px; padding: 25px; font-size: 15px; border: 1.5px solid #DADCE0; width: 100%; margin-top: 40px; position: relative;">
+                         <!-- Connection dot at top of white card -->
+                         <div style="position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: #4285F4; border-radius: 50%; z-index: 5;"></div>
+                         <p style="color: #3C4043; margin-bottom: 20px; font-weight: 700;">Ready to Act:</p>
+                         <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px; color: #202124;">
+                             <div style="color: #34A853; font-size: 18px; font-weight: 700;">✓</div>
+                             <span style="font-weight: 500; color: #1E8E3E;">Found 3 flight options</span>
+                         </div>
+                         <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px; color: #202124;">
+                             <div style="color: #34A853; font-size: 18px; font-weight: 700;">✓</div>
+                             <span style="font-weight: 500; color: #1E8E3E;">Matched with hotels</span>
+                         </div>
+                         <div style="display: flex; gap: 12px; align-items: center; color: #202124;">
+                             <div style="color: #34A853; font-size: 18px; font-weight: 700;">✓</div>
+                             <span style="font-weight: 500; color: #1E8E3E;">Ready to book</span>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        </div>
+        <p style="text-align: center; color: #5F6368; font-style: italic;">Figure: The same request, three different responses—showing the power of agent autonomy.</p>
+        
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">6</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 7: Module 1 Solution (Summary) -->
+    <div class="page" id="page-7">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <div style="background: var(--google-blue-light); border-radius: 30px; padding: 50px; position: relative;">
+            <h2 style="font-size: 42px; margin-bottom: 30px;">Key takeaways</h2>
+            <p style="font-size: 18px; color: #5f6368; margin-bottom: 30px;">The agent abstraction represents a fundamental shift in how we think about AI systems:</p>
+            <ul style="list-style: none; font-size: 18px; display: flex; flex-direction: column; gap: 20px;">
+                <li style="display: flex; gap: 15px;"><span style="color: var(--google-blue); font-weight: 700; min-width: 180px;">From reactive to proactive:</span><span>Agents don’t just respond; they pursue goals.</span></li>
+                <li style="display: flex; gap: 15px;"><span style="color: var(--google-blue); font-weight: 700; min-width: 180px;">From isolated to integrated:</span><span>Agents maintain context and state across interactions.</span></li>
+                <li style="display: flex; gap: 15px;"><span style="color: var(--google-blue); font-weight: 700; min-width: 180px;">From advisory to executive:</span><span>Agents don’t just tell you what to do — they do it.</span></li>
+                <li style="display: flex; gap: 15px;"><span style="color: var(--google-blue); font-weight: 700; min-width: 180px;">From static to adaptive:</span><span>Agents adjust their approach based on what they learn.</span></li>
+            </ul>
+            <p style="margin-top: 40px; font-size: 18px; font-weight: 600; color: #202124;">This isn’t just an incremental improvement, but a paradigm shift enabling entirely new application categories.</p>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">7</div>
+        </footer>
+    </div>
+
+
+    <!-- PAGE 8: Module 2 Problem Intro -->
+    <div class="page" id="page-8">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h1 class="main-title">The problem:<br><span class="pill-red">Building intelligence</span><br>without structure</h1>
+        <div class="content-cols">
+            <div class="intro-col">
+                <p>Now that you understand what agents are and why they matter, let’s peek under the hood. How does something go from being a text-generating model to an autonomous problem-solver?</p>
+                <p>In module 1, you learned that agents are defined by five essential characteristics: goal-directed behavior, autonomous operation, proactive initiative, environmental awareness, and tool use.</p>
+                <p>Now here's the interesting part—all five of these characteristics emerge from just three architectural components working together.</p>
+            </div>
+            <div class="intro-col">
+                <p>According to Google’s agent whitepaper, every agent is built from these three components: the model (thinking), the tools (doing), and the orchestration (the process connecting them). It’s like a car—no matter how fancy the make, they all have an engine, wheels, and a steering system. These three components work together to create the autonomous, goal-directed behavior that defines an agent.</p>
+                <p>Think of it this way: The model enables autonomous decision-making and environmental awareness. The tools enable real-world action. The orchestration enables goal-directed, proactive behavior. Three components, working together, produce all five agent characteristics.</p>
+            </div>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">8</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 9: Module 2 Problem Detail -->
+    <div class="page" id="page-9">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h2 style="font-size: 42px; margin-bottom: 30px;">The hidden complexity of "Simple" tasks</h2>
+        <p style="font-size: 18px; color: #5F6368; margin-bottom: 40px;">What happens if you try to build an intelligent system without this structure? Imagine a user says: “Schedule a meeting with Sarah next week.” Your system needs to:</p>
+        <div style="background: #f8f9fa; border-radius: 30px; padding: 40px; margin-bottom: 40px; border: 1px solid #DADCE0;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div style="background: white; border-radius: 12px; padding: 15px; border: 1px solid #E8EAED; display: flex; align-items: center; gap: 15px;">
+                   <span style="background: var(--google-red); color: white; min-width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">1</span>
+                   <span>Understand who Sarah is.</span>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 15px; border: 1px solid #E8EAED; display: flex; align-items: center; gap: 15px;">
+                   <span style="background: var(--google-red); color: white; min-width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">2</span>
+                   <span>Check both calendars for availability.</span>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 15px; border: 1px solid #E8EAED; display: flex; align-items: center; gap: 15px;">
+                   <span style="background: var(--google-red); color: white; min-width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">3</span>
+                   <span>Find a mutually free time.</span>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 15px; border: 1px solid #E8EAED; display: flex; align-items: center; gap: 15px;">
+                   <span style="background: var(--google-red); color: white; min-width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">4</span>
+                   <span>Send a meeting invitation.</span>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 15px; border: 1px solid #E8EAED; display: flex; align-items: center; gap: 15px;">
+                   <span style="background: var(--google-red); color: white; min-width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">5</span>
+                   <span>Add it to both calendars.</span>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 15px; border: 1px solid #E8EAED; display: flex; align-items: center; gap: 15px;">
+                   <span style="background: var(--google-red); color: white; min-width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">6</span>
+                   <span>Confirm with the user.</span>
+                </div>
+            </div>
+        </div>
+        <p style="font-size: 18px; line-height: 1.6; color: #3C4043;">Without the proper three-component architecture, you end up writing specific code for every possible sequence soon you have thousands of lines of brittle if-then-else logic that breaks the moment someone asks something slightly different.</p>
+        <p style="margin-top: 20px; color: #EA4335; font-weight: 700; font-size: 20px;">The root problem is trying to handle complexity with rigid code instead of flexible, intelligent behavior.</p>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">9</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 10: Module 2 Solution Intro -->
+    <div class="page" id="page-10">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h1 class="main-title">The solution:<br><span class="pill-blue">Three components</span><br>working together</h1>
+        <div style="background: var(--google-blue-light); border-radius: 40px; padding: 60px; text-align: center; margin-top: 20px;">
+            <h2 style="font-size: 32px; margin-bottom: 30px;">The Agent Equation</h2>
+            <div style="font-size: 42px; font-weight: 700; color: var(--google-blue); font-family: monospace; border: 3px solid var(--google-blue); padding: 30px; border-radius: 20px; background: white; display: inline-block;">Agent = Model + Tools + Orchestration</div>
+        </div>
+        <p style="margin-top: 40px; font-size: 20px; line-height: 1.6;">Notice how orchestration sits at the center, connecting the model's intelligence with the tools’ real-world capabilities. Together, they create the autonomous, goal-directed behavior that defines an agent.</p>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">10</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 11: Module 2 The Model -->
+    <div class="page" id="page-11">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h2 style="font-size: 48px; margin-bottom: 40px; color: var(--google-blue);">1. The Model (Thinking)</h2>
+        <div style="background: #f8f9fa; border-radius: 30px; padding: 40px; margin-bottom: 40px;">
+            <p style="font-size: 20px; line-height: 1.6;">According to the whitepaper, the model serves as the centralized decision maker for all agent processes. It's the reasoning engine that enables the agent to understand goals, make decisions, and adapt based on feedback.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+            <div style="background: white; border: 1px solid #E8EAED; border-radius: 16px; padding: 25px;">
+                <h4 style="color: var(--google-blue); margin-bottom: 10px;">Understanding intent</h4>
+                <p style="font-size: 16px; margin-bottom: 0;">Takes natural language and extracts the actual goal while handling ambiguity. It recognizes destination confusion (Paris, France vs Paris, Texas) and asks for clarification.</p>
+            </div>
+            <div style="background: white; border: 1px solid #E8EAED; border-radius: 16px; padding: 25px;">
+                <h4 style="color: var(--google-blue); margin-bottom: 10px;">Making decisions</h4>
+                <p style="font-size: 16px; margin-bottom: 0;">At each step, it decides what to do next—prioritizing flights vs hotels or asking for info vs using defaults based on dependencies.</p>
+            </div>
+            <div style="background: white; border: 1px solid #E8EAED; border-radius: 16px; padding: 25px;">
+                <h4 style="color: var(--google-blue); margin-bottom: 10px;">Learning from feedback</h4>
+                <p style="font-size: 16px; margin-bottom: 0;">When a tool returns results or errors, the model interprets the feedback and adjusts its approach (e.g., trying different dates for expensive flights).</p>
+            </div>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">11</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 12: Module 2 Tools -->
+    <div class="page" id="page-12">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h2 style="font-size: 48px; margin-bottom: 40px; color: var(--google-red);">2. Tools (Doing)</h2>
+        <div style="background: var(--google-red-light); border-radius: 30px; padding: 40px; margin-bottom: 40px;">
+            <p style="font-size: 20px; line-height: 1.6;">If the model is the brain, tools are the hands; they let the agent actually do things in the world. "Without tools, an agent is just a brain in a jar."</p>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+            <div style="background: white; border: 1px solid #FAD2CF; border-radius: 16px; padding: 25px;">
+                <h4 style="color: var(--google-red); margin-bottom: 10px;">Pre-built integrations</h4>
+                <p style="font-size: 16px; margin-bottom: 0;">Handle common tasks by connecting to services like Google Flights or weather APIs. They package complex logic into simple commands.</p>
+            </div>
+            <div style="background: white; border: 1px solid #FAD2CF; border-radius: 16px; padding: 25px;">
+                <h4 style="color: var(--google-red); margin-bottom: 10px;">Custom functions</h4>
+                <p style="font-size: 16px; margin-bottom: 0;">Allow the agent to leverage your existing application code. Perfect for operations requiring control or human approval before execution.</p>
+            </div>
+            <div style="background: white; border: 1px solid #FAD2CF; border-radius: 16px; padding: 25px;">
+                <h4 style="color: var(--google-red); margin-bottom: 10px;">Information retrieval</h4>
+                <p style="font-size: 16px; margin-bottom: 0;">Accesses company documentation, customer history, and catalogs to find the right information when needed rather than knowing everything upfront.</p>
+            </div>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">12</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 13: Module 2 Orchestration Loop -->
+    <div class="page" id="page-13">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h2 style="font-size: 48px; margin-bottom: 40px; color: var(--google-yellow);">3. Orchestration (the process)</h2>
+        <div style="background: var(--google-yellow-light); border-radius: 30px; padding: 40px; margin-bottom: 30px;">
+            <p style="font-size: 18px; line-height: 1.6;">The orchestration layer is a cyclical process that governs how the agent takes in information, performs internal reasoning, and uses that reasoning to inform its next action or decision. This loop continues until the agent reaches its goal.</p>
+        </div>
+        <div style="padding: 40px; text-align: center; background: #FEF7E0; border-radius: 30px;">
+            <h3 style="margin-bottom: 40px; font-size: 32px;">The Agent Loop</h3>
+            <div style="display: flex; gap: 30px; align-items: center; justify-content: center; font-size: 28px; font-weight: 700;">
+                <span style="color: var(--google-blue); background: white; padding: 10px 20px; border-radius: 12px; border: 2px solid var(--google-blue);">Perceive</span>
+                <span style="color: var(--google-red);">➟</span>
+                <span style="color: var(--google-red); background: white; padding: 10px 20px; border-radius: 12px; border: 2px solid var(--google-red);">Think</span>
+                <span style="color: var(--google-yellow);">➟</span>
+                <span style="color: var(--google-yellow); background: white; padding: 10px 20px; border-radius: 12px; border: 2px solid var(--google-yellow);">Act</span>
+                <span style="color: var(--google-green);">➟</span>
+                <span style="color: var(--google-green); background: white; padding: 10px 20px; border-radius: 12px; border: 2px solid var(--google-green);">Check</span>
+            </div>
+            <p style="margin-top: 30px; font-size: 16px; color: #5F6368;">The cycle repeats until the agent achieves its goal or realizes it needs user input.</p>
+        </div>
+        <div style="margin-top: 20px; font-size: 14px; color: #5F6368; line-height: 1.5;">
+            Techniques like <strong>ReAct</strong> (reasoning + acting), <strong>Chain-of-thought</strong>, or <strong>Tree-of-thoughts</strong> help the model decide what to do at each step, but the core pattern remains: <span style="font-weight: 700;">Perceive → Think → Act → Check.</span>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">13</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 14: Module 2 Putting it all together -->
+    <div class="page" id="page-14">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h2 style="font-size: 42px; margin-bottom: 30px;">Putting it all together: Flight Booking Loop</h2>
+        <div style="background: #f8f9fa; border-radius: 20px; padding: 25px; font-family: monospace; font-size: 13px; line-height: 1.4; border: 1px solid #DADCE0;">
+            <p style="margin-bottom: 10px;"><strong>User:</strong> "Book me a flight to Paris next week"</p>
+            <div style="border-left: 2px solid #DADCE0; margin-left: 10px; padding-left: 15px; margin-bottom: 15px;">
+                <p><strong>Loop Iteration 1:</strong></p>
+                <ul style="list-style: none;">
+                    <li>├─ Perceive: User wants a flight to Paris next week</li>
+                    <li>├─ Think: Need to know which Paris and specific dates</li>
+                    <li>├─ Act: Ask clarifying question</li>
+                    <li>└─ Check: Not done - need user response</li>
+                </ul>
+            </div>
+            <p style="margin-bottom: 10px;"><strong>User:</strong> "Paris, France. I'm flexible on dates."</p>
+            <div style="border-left: 2px solid #DADCE0; margin-left: 10px; padding-left: 15px; margin-bottom: 15px;">
+                <p><strong>Loop Iteration 2:</strong></p>
+                <ul style="list-style: none;">
+                    <li>├─ Perceive: Destination corrected; user flexible</li>
+                    <li>├─ Think: Check user's calendar for availability</li>
+                    <li>├─ Act: Use calendar tool → "Available Mon-Wed next week"</li>
+                    <li>└─ Check: Not done - have dates but no options</li>
+                </ul>
+            </div>
+            <div style="border-left: 2px solid #DADCE0; margin-left: 10px; padding-left: 15px; margin-bottom: 10px;">
+                <p><strong>Loop Iteration 3:</strong></p>
+                <ul style="list-style: none;">
+                    <li>├─ Perceive: Available Mon-Wed</li>
+                    <li>├─ Think: Search for flights on those dates</li>
+                    <li>├─ Act: Use flight search tool → Returns 3 options</li>
+                    <li>└─ Check: Not done - need user to choose</li>
+                </ul>
+            </div>
+        </div>
+        <div style="background: #E6F4EA; border-radius: 15px; padding: 15px; margin-top: 20px; border: 1px solid #CEEAD6;">
+            <p style="margin-bottom: 0; font-size: 14px;"><strong>Agent:</strong> "Done! Your direct flight to Paris, France is booked for Monday."</p>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">14</div>
+        </footer>
+    </div>
+
+
+    <!-- PAGE 15: Module 3 Problem Intro -->
+    <div class="page" id="page-15">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h1 class="main-title">The problem:<br><span class="pill-red">The right tool</span><br>for the wrong job</h1>
+        <div class="content-cols">
+            <div class="intro-col">
+                <p>By now, it’s clear that agents are incredibly powerful. They can plan, use tools, and autonomously pursue goals. But there’s a trap many developers fall into: trying to use agents for everything.</p>
+                <p>When you have a hammer, everything looks like a nail. But as our agent whitepaper notes, using a sophisticated agent for a simple, deterministic task is like using a rocket ship to go to the grocery store—it’s expensive, slow, and prone to unnecessary failure.</p>
+            </div>
+            <div class="intro-col">
+                <p>The biggest challenge in building with agents isn’t the technical implementation—it’s knowing when <em>not</em> to use one. Over-engineering simple tasks with agents introduces latency, cost, and "hallucination risk" where none existed before.</p>
+                <p>Before you build, you need to ask: Does this task actually require autonomous reasoning and adaptation, or is it just a sequence of steps that can be handled more reliably with traditional code?</p>
+            </div>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">15</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 16: Module 3 When NOT to use agents -->
+    <div class="page" id="page-16">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h2 style="font-size: 42px; margin-bottom: 30px;">Three signs you don't need an agent</h2>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+            <div style="background: white; border: 2px solid #FAD2CF; border-radius: 20px; padding: 25px; border-top: 10px solid var(--google-red);">
+                <h3 style="color: var(--google-red); margin-bottom: 10px;">The task is simple and single-step</h3>
+                <p style="font-size: 16px; margin-bottom: 0;">If you're just summarizing a single document or translating a sentence, you don't need an agent. A simple LLM API call is faster, cheaper, and more reliable.</p>
+            </div>
+            <div style="background: white; border: 2px solid #FAD2CF; border-radius: 20px; padding: 25px; border-top: 10px solid var(--google-red);">
+                <h3 style="color: var(--google-red); margin-bottom: 10px;">The process is deterministic</h3>
+                <p style="font-size: 16px; margin-bottom: 0;">If you know exactly which steps to take every time, use a workflow or script. Traditional code is 100% reliable; agents are not. Use agents only when the path isn't known upfront.</p>
+            </div>
+            <div style="background: white; border: 2px solid #FAD2CF; border-radius: 20px; padding: 25px; border-top: 10px solid var(--google-red);">
+                <h3 style="color: var(--google-red); margin-bottom: 10px;">Latency is critical</h3>
+                <p style="font-size: 16px; margin-bottom: 0;">The agent "Loop" is slow because it has to think, act, and check. If your users need a sub-second response, avoid agentic architectures unless they're running in the background.</p>
+            </div>
+        </div>
+        <p style="margin-top: 40px; font-size: 18px; color: #5F6368; font-style: italic;">"Just because you <u>can</u> use an agent doesn't mean you <u>should</u>."</p>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">16</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 17: Module 3 Solution Intro -->
+    <div class="page" id="page-17">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h1 class="main-title">The solution:<br><span class="pill-blue">Clear decision criteria</span></h1>
+        <div style="max-width: 800px;">
+            <p style="font-size: 22px; line-height: 1.6; margin-bottom: 40px;">So when <em>should</em> you use an agent? According to Google’s agent whitepaper, you should use an agent when your task meets three specific criteria: it requires <strong>multi-step reasoning</strong>, it needs to <strong>interact with external tools</strong>, and it must <strong>adapt to dynamic feedback.</strong></p>
+            <div style="background: var(--google-blue-light); border-radius: 30px; padding: 40px; border: 2px solid var(--google-blue);">
+                <h3 style="font-size: 28px; color: var(--google-blue); margin-bottom: 20px;">The Sweet Spot</h3>
+                <p style="font-size: 18px; margin-bottom: 0;">Agents are the right tool when you have a complex goal where the specific sequence of actions cannot be pre-defined because it depends on information found during the process.</p>
+            </div>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">17</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 18: Module 3 Decision Flowchart -->
+    <div class="page" id="page-18">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h2 style="font-size: 38px; margin-bottom: 40px;">The Agent Decision Framework</h2>
+        <div style="background: #F1F3F4; border-radius: 30px; padding: 40px; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <div style="background: white; border: 2px solid #DADCE0; padding: 15px 30px; border-radius: 12px; font-weight: 700;">Start: Specific Task</div>
+            <div style="color: #5F6368;">↓</div>
+            <div style="background: #E8F0FE; border: 2px solid var(--google-blue); padding: 20px; border-radius: 12px; width: 300px; text-align: center;">
+                <div style="font-weight: 700; margin-bottom: 10px;">Multiple steps?</div>
+                <div style="display: flex; justify-content: space-around; font-size: 14px;"><span>No → Use Simple API</span><span>Yes ↓</span></div>
+            </div>
+            <div style="color: #5F6368;">↓</div>
+            <div style="background: #FEF7E0; border: 2px solid var(--google-yellow); padding: 20px; border-radius: 12px; width: 300px; text-align: center;">
+                <div style="font-weight: 700; margin-bottom: 10px;">Needs adaptation?</div>
+                <div style="display: flex; justify-content: space-around; font-size: 14px;"><span>No → Use Workflow</span><span>Yes ↓</span></div>
+            </div>
+            <div style="color: #5F6368;">↓</div>
+            <div style="background: #E6F4EA; border: 2px solid var(--google-green); padding: 25px; border-radius: 12px; width: 320px; text-align: center; font-size: 20px; font-weight: 700; color: #167B32;">
+                USE AN AGENT
+            </div>
+        </div>
+        <p style="margin-top: 30px; color: #5F6368; text-align: center; font-style: italic;">Figure: A simple flowchart to determine if your task requires an agentic architecture.</p>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">18</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 19: Module 3 Implementation Advice -->
+    <div class="page" id="page-19">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h2 style="font-size: 42px; margin-bottom: 30px;">Advice for getting started</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div style="background: #f8f9fa; border-radius: 20px; padding: 30px; border: 1px solid #DADCE0;">
+                <h3 style="color: var(--google-blue); margin-bottom: 15px;">Start simple</h3>
+                <p>Don't build a complex agent from day one. Start with a single API call, then add tools, and finally add orchestration only where necessary.</p>
+            </div>
+            <div style="background: #f8f9fa; border-radius: 20px; padding: 30px; border: 1px solid #DADCE0;">
+                <h3 style="color: var(--google-yellow); margin-bottom: 15px;">Monitor closely</h3>
+                <p>Agents are non-deterministic. You need extensive logging and monitoring to understand why an agent made a specific decision or where it got stuck.</p>
+            </div>
+            <div style="background: #f8f9fa; border-radius: 20px; padding: 30px; border: 1px solid #DADCE0;">
+                <h3 style="color: var(--google-red); margin-bottom: 15px;">Human in the loop</h3>
+                <p>For high-stakes actions (sending money, deleting data), always include a step where a human must approve the agent's proposed action.</p>
+            </div>
+            <div style="background: #f8f9fa; border-radius: 20px; padding: 30px; border: 1px solid #DADCE0;">
+                <h3 style="color: var(--google-green); margin-bottom: 15px;">Define clear goals</h3>
+                <p>An agent is only as good as its objective. Be precise in what you want the agent to achieve and what constraints it should respect.</p>
+            </div>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">19</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 20: Module 3 Summary -->
+    <div class="page" id="page-20">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <div style="background: var(--google-blue-light); border-radius: 40px; padding: 80px;">
+            <h2 style="font-size: 56px; margin-bottom: 40px;">Key takeaways</h2>
+            <ul style="list-style: none; font-size: 24px; line-height: 2.2;">
+                <li><strong style="color: var(--google-blue);">• Use agents</strong> for reasoning + adaptation.</li>
+                <li><strong style="color: var(--google-blue);">• Skip agents</strong> for simple, single-step tasks.</li>
+            </ul>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">20</div>
+        </footer>
+    </div>
+
+
+    <!-- PAGE 21: Conclusion Part 1 - Accomplishments -->
+    <div class="page" id="page-21">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <div style="position: relative; margin-bottom: 40px;">
+            <div style="background: var(--google-blue); color: white; padding: 20px 60px; border-radius: 60px; display: inline-block; font-size: 80px; font-weight: 700; margin-bottom: 10px; position: relative;">
+                What you've
+                <div style="position: absolute; left: -30px; top: -10px; width: 60px; height: 60px; background: #4285F4; border-radius: 15px; transform: rotate(45deg); display: flex; align-items: center; justify-content: center; border: 4px solid white;"><span style="color: white; transform: rotate(-45deg); font-size: 30px;">✦</span></div>
+            </div><br>
+            <div style="background: #174EA6; color: white; padding: 20px 60px; border-radius: 60px; display: inline-block; font-size: 80px; font-weight: 700; margin-left: 40px; position: relative;">
+                accomplished
+                <div style="position: absolute; right: -20px; top: 0px; font-size: 60px;">🔥</div>
+            </div>
+        </div>
+        
+        <p style="font-size: 20px; line-height: 1.6; color: #3C4043; margin-bottom: 40px; max-width: 900px;">You've completed the foundational course on AI Agents in just 60 minutes and now possess a clear understanding of what agents are, how they work, and when to use them. This theoretical foundation will serve as your north star as you progress to building real agent systems in upcoming courses.</p>
+
+        <h2 style="font-size: 36px; margin-bottom: 30px;">Your mental models</h2>
+        <p style="font-size: 18px; color: #5F6368; margin-bottom: 30px;">You now have powerful frameworks for thinking about agents:</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            <div>
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                   <span style="background: #202124; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">1</span>
+                   <h3 style="font-size: 24px;">The three analogies</h3>
+                </div>
+                <ul style="list-style: none; padding-left: 45px; font-size: 18px; display: flex; flex-direction: column; gap: 15px;">
+                    <li><strong>• LLMs = consultants</strong><br><span style="color: #5F6368; font-size: 16px;">(give advice, don't implement).</span></li>
+                    <li><strong>• LLMs with functions = assistants with tools</strong><br><span style="color: #5F6368; font-size: 16px;">(can use tools when told).</span></li>
+                    <li><strong>• Agents = Trusted employees</strong><br><span style="color: #5F6368; font-size: 16px;">(you give them goals, they figure it out).</span></li>
+                </ul>
+                <div style="display: flex; align-items: center; gap: 15px; margin-top: 30px; margin-bottom: 15px;">
+                   <span style="background: #202124; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">2</span>
+                   <h3 style="font-size: 24px;">The agent equation</h3>
+                </div>
+                <div style="background: #F8F9FA; padding: 25px; border-radius: 12px; margin-left: 45px; border: 1px solid #E8EAED; text-align: center;">
+                    <div style="font-family: monospace; font-size: 20px; color: var(--google-blue); font-weight: 700;">Agent = model + tools<br>+ orchestration</div>
+                    <p style="font-size: 14px; color: #5F6368; margin-top: 15px; margin-bottom: 0;">Simple but complete. All three components are essential.</p>
+                </div>
+            </div>
+            <div>
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                   <span style="background: #202124; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">3</span>
+                   <h3 style="font-size: 24px;">The restaurant model</h3>
+                </div>
+                <ul style="list-style: none; padding-left: 45px; font-size: 18px; display: flex; flex-direction: column; gap: 15px;">
+                    <li><strong>• Model = Cook</strong><br><span style="color: #5F6368; font-size: 16px;">(knows recipes, makes decisions).</span></li>
+                    <li><strong>• Tools = Kitchen equipment</strong><br><span style="color: #5F6368; font-size: 16px;">(actually cooks).</span></li>
+                    <li><strong>• Orchestration = Process</strong><br><span style="color: #5F6368; font-size: 16px;">(order, plan, cook, serve).</span></li>
+                </ul>
+                <div style="display: flex; align-items: center; gap: 15px; margin-top: 30px; margin-bottom: 20px;">
+                   <span style="background: #202124; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">4</span>
+                   <h3 style="font-size: 24px;">The decision framework</h3>
+                </div>
+                <ul style="list-style: none; padding-left: 45px; font-size: 17px; display: flex; flex-direction: column; gap: 10px;">
+                    <li>• Multiple steps? <strong>Yes.</strong></li>
+                    <li>• Needs adaptation? <strong>Yes.</strong></li>
+                    <li>• Requires reasoning? <strong>Yes.</strong></li>
+                    <li>• External actions? <strong>Yes → Use an agent.</strong></li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">21</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 22: Conclusion Part 2 - Takeaways -->
+    <div class="page" id="page-22">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            <div>
+                <h2 style="font-size: 36px; margin-bottom: 25px;">What you can do now</h2>
+                <p style="font-size: 16px; color: #5F6368; margin-bottom: 15px;">With this knowledge, you can:</p>
+                <ul style="list-style: none; font-size: 16px; display: flex; flex-direction: column; gap: 15px;">
+                    <li style="display: flex; gap: 10px;"><span style="color: var(--google-blue); font-weight: 700;">•</span> <span>Differentiate between LLMs, function calling, and agents with clarity.</span></li>
+                    <li style="display: flex; gap: 10px;"><span style="color: var(--google-blue); font-weight: 700;">•</span> <span>Explain how the three components work together in the agent loop.</span></li>
+                    <li style="display: flex; gap: 10px;"><span style="color: var(--google-blue); font-weight: 700;">•</span> <span>Evaluate whether a problem needs an agent or a simpler solution.</span></li>
+                    <li style="display: flex; gap: 10px;"><span style="color: var(--google-blue); font-weight: 700;">•</span> <span>Design high-level agent architectures for specific use cases.</span></li>
+                    <li style="display: flex; gap: 10px;"><span style="color: var(--google-blue); font-weight: 700;">•</span> <span>Avoid common pitfalls and anti-patterns.</span></li>
+                </ul>
+                
+                <h3 style="font-size: 28px; margin-top: 40px; margin-bottom: 20px;">Reflection questions</h3>
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="background: #F1F3F4; padding: 15px; border-radius: 12px; font-size: 14px;"><strong>Personal application:</strong> Think of a repetitive task in your work. Does it fit the agent criteria?</div>
+                    <div style="background: #F1F3F4; padding: 15px; border-radius: 12px; font-size: 14px;"><strong>Tool selection:</strong> If building a customer service agent, would you use extensions or functions?</div>
+                    <div style="background: #F1F3F4; padding: 15px; border-radius: 12px; font-size: 14px;"><strong>Architecture decision:</strong> Would an e-commerce system benefit from single or multi-agents?</div>
+                </div>
+            </div>
+            <div style="background: var(--google-blue-light); border-radius: 30px; padding: 40px; border: 2px solid var(--google-blue);">
+                <h2 style="font-size: 32px; margin-bottom: 30px; color: var(--google-blue);">Key takeaways</h2>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div>
+                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 5px;">Agents ≠ chatbots</div>
+                        <p style="font-size: 15px; color: #5F6368; margin-bottom: 0;">Agents are autonomous systems that can perceive, reason, and act.</p>
+                    </div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 5px;">Architecture matters</div>
+                        <p style="font-size: 15px; color: #5F6368; margin-bottom: 0;">Model + Tools + Orchestration working together creates the magic.</p>
+                    </div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 5px;">Tools = superpowers</div>
+                        <p style="font-size: 15px; color: #5F6368; margin-bottom: 0;">Without tools, even the smartest model can't touch the world.</p>
+                    </div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 5px;">Not everything needs an agent</div>
+                        <p style="font-size: 15px; color: #5F6368; margin-bottom: 0;">Sometimes simple automation is the right answer.</p>
+                    </div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 5px;">Autonomy is the key</div>
+                        <p style="font-size: 15px; color: #5F6368; margin-bottom: 0;">The defining feature of agents is goal-directed autonomous behavior.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">22</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 23: Reading List -->
+    <div class="page" id="page-23">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h1 class="main-title" style="font-size: 60px;">Resources</h1>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            <div>
+               <h3 style="margin-bottom: 20px; font-size: 24px; color: var(--google-blue); border-bottom: 2px solid var(--google-blue); padding-bottom: 10px;">From Google:</h3>
+               <div style="display: flex; flex-direction: column; gap: 20px;">
+                   <a href="https://www.youtube.com/watch?v=ZZ2QUCePgYw" target="_blank" style="text-decoration: none; color: inherit; display: block; background: #f8f9fa; border-radius: 12px; padding: 20px; border: 1px solid #DADCE0; transition: transform 0.2s;">
+                       <div style="font-weight: 700; margin-bottom: 8px; color: var(--google-blue);">Intro to AI Agents</div>
+                       <p style="font-size: 13px; color: #5F6368; margin-bottom: 0;">A deep dive into agent definitions, capabilities, use cases, and architectural approaches.</p>
+                   </a>
+                   <a href="https://www.youtube.com/watch?v=Qd6anWv0mv0" target="_blank" style="text-decoration: none; color: inherit; display: block; background: #f8f9fa; border-radius: 12px; padding: 20px; border: 1px solid #DADCE0;">
+                       <div style="font-weight: 700; margin-bottom: 8px; color: var(--google-blue);">Workflows versus agents</div>
+                       <p style="font-size: 13px; color: #5F6368; margin-bottom: 0;">Understand how agentic workflows differ from traditional ones and when to use each.</p>
+                   </a>
+                   <a href="https://www.youtube.com/watch?v=aLYrV61rJG4" target="_blank" style="text-decoration: none; color: inherit; display: block; background: #f8f9fa; border-radius: 12px; padding: 20px; border: 1px solid #DADCE0;">
+                       <div style="font-weight: 700; margin-bottom: 8px; color: var(--google-blue);">The Agent Factory – Episode 1</div>
+                       <p style="font-size: 13px; color: #5F6368; margin-bottom: 0;">Explore what makes a true AI Agent and how to build using the Agent Developer Kit.</p>
+                   </a>
+                   <a href="https://www.youtube.com/watch?v=Zgdg8MPrGZg" target="_blank" style="text-decoration: none; color: inherit; display: block; background: #f8f9fa; border-radius: 12px; padding: 20px; border: 1px solid #DADCE0;">
+                       <div style="font-weight: 700; margin-bottom: 8px; color: var(--google-blue);">Conversational versus non-conversational AI</div>
+                       <p style="font-size: 13px; color: #5F6368; margin-bottom: 0;">See how agentic AI handles multi-turn interactions and system instructions.</p>
+                   </a>
+               </div>
+            </div>
+            <div>
+               <h3 style="margin-bottom: 20px; font-size: 24px; color: var(--google-red); border-bottom: 2px solid var(--google-red); padding-bottom: 10px;">From the community:</h3>
+               <div style="display: flex; flex-direction: column; gap: 20px;">
+                   <a href="https://www.youtube.com/watch?v=-m_PcYLLW10" target="_blank" style="text-decoration: none; color: inherit; display: block; background: #f8f9fa; border-radius: 12px; padding: 20px; border: 1px solid #DADCE0;">
+                       <div style="font-weight: 700; margin-bottom: 8px; color: var(--google-red);">Everything you need to know – Part 1</div>
+                       <p style="font-size: 13px; color: #5F6368; margin-bottom: 0;">A series diving into the capabilities of agentic AI and how it differs from traditional AI.</p>
+                   </a>
+                   <a href="https://www.youtube.com/watch?v=7Bi-f5Y6hzo" target="_blank" style="text-decoration: none; color: inherit; display: block; background: #f8f9fa; border-radius: 12px; padding: 20px; border: 1px solid #DADCE0;">
+                       <div style="font-weight: 700; margin-bottom: 8px; color: var(--google-red);">What is Agentic AI – Part 2</div>
+                       <p style="font-size: 13px; color: #5F6368; margin-bottom: 0;">Continuing the deep dive into advanced agentic architectures and real-world results.</p>
+                   </a>
+               </div>
+               
+               <div style="margin-top: 40px; background: #E8F0FE; border-radius: 20px; padding: 30px; border: 1px dashed var(--google-blue);">
+                   <h4 style="margin-bottom: 10px;">Have questions?</h4>
+                   <p style="font-size: 14px; margin-bottom: 0;">Post questions in our community forum to connect with other agent developers.</p>
+               </div>
+            </div>
+        </div>
+
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">23</div>
+        </footer>
+    </div>
+
+    <!-- PAGE 24: Final words & Quick Reference Card -->
+    <div class="page" id="page-24">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h1 class="main-title" style="font-size: 60px;">Final words</h1>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 30px;">
+            <p style="font-size: 18px; line-height: 1.6; color: #3C4043;">You've built a rock-solid theoretical foundation in just one hour. Many developers skip this and jump straight to code without understanding the principles. You now have the mental models that will help you make better decisions as you build agents.</p>
+            <p style="font-size: 18px; line-height: 1.6; font-weight: 500; color: #202124;">You’re no longer someone who’s heard about AI agents. You’re someone who understands what they are, how they work, and when to use them. The world of agent development awaits. Your journey from theory to practice begins now.</p>
+        </div>
+
+        <div style="background: #F8F9FA; border-radius: 30px; padding: 40px; border: 1px solid #DADCE0;">
+            <h3 style="margin-bottom: 30px; font-size: 28px; text-align: center;">Quick reference card</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                <!-- What is an agent? -->
+                <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #DADCE0;">
+                    <h4 style="margin-bottom: 10px; font-size: 16px; color: var(--google-blue);">What is an agent?</h4>
+                    <p style="font-size: 14px; margin-bottom: 0;">An autonomous system that achieves goals by observing and acting in its environment.</p>
+                    <h4 style="margin-top: 15px; margin-bottom: 10px; font-size: 16px; color: var(--google-blue);">Three components:</h4>
+                    <ul style="list-style: none; font-size: 14px; display: flex; flex-direction: column; gap: 5px;">
+                        <li>• Model (reasoning)</li>
+                        <li>• Tools (doing)</li>
+                        <li>• Orchestration (process)</li>
+                    </ul>
+                </div>
+                
+                <!-- When to use -->
+                <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #DADCE0;">
+                    <h4 style="margin-bottom: 10px; font-size: 16px; color: var(--google-green);">When to use:</h4>
+                    <ul style="list-style: none; font-size: 14px; display: flex; flex-direction: column; gap: 5px;">
+                        <li>✓ Multi-step workflows</li>
+                        <li>✓ Adaptation requirements</li>
+                        <li>✓ Reasoning requirements</li>
+                        <li>✓ External actions needed</li>
+                    </ul>
+                    <h4 style="margin-top: 15px; margin-bottom: 10px; font-size: 16px; color: var(--google-yellow);">Agent loop:</h4>
+                    <p style="font-size: 14px; font-weight: 700; margin-bottom: 0;">Perceive → think → act → check</p>
+                </div>
+
+                <!-- When NOT to use -->
+                <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #DADCE0;">
+                    <h4 style="margin-bottom: 10px; font-size: 16px; color: var(--google-red);">When NOT to use:</h4>
+                    <ul style="list-style: none; font-size: 14px; display: flex; flex-direction: column; gap: 5px;">
+                        <li>✕ Simple operations</li>
+                        <li>✕ Deterministic tasks</li>
+                        <li>✕ Real-time constraints</li>
+                        <li>✕ FAQ / Simple Q&A</li>
+                    </ul>
+                    <h4 style="margin-top: 15px; margin-bottom: 10px; font-size: 16px; color: var(--google-blue);">Tool examples:</h4>
+                    <ul style="list-style: none; font-size: 13px; display: flex; flex-direction: column; gap: 5px;">
+                        <li>• Pre-built integrations</li>
+                        <li>• Custom functions</li>
+                        <li>• Information retrieval</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">24</div>
+        </footer>
+    </div>
+
+</body>
+
+
+
+</html>
