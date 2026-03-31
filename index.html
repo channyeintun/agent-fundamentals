@@ -719,10 +719,64 @@
             <div class="page-number">14</div>
         </footer>
     </div>
-
-
-    <!-- PAGE 15: Module 3 Problem Intro -->
+    
+    <!-- PAGE 15: Module 2 RAG -->
     <div class="page" id="page-15">
+        <header class="page-header">
+            <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+            <div class="skills-text">Skills</div>
+        </header>
+        <h1 class="main-title">The knowledge tool:<br><span class="pill-blue">Retrieval-Augmented</span><br><span class="pill-red">Generation (RAG)</span></h1>
+        <div class="content-cols">
+            <div class="intro-col">
+                <h3 style="font-weight: 700;">What is RAG?</h3>
+                <p>Retrieval-Augmented Generation (RAG) is a technique that gives an LLM access to external data not included in its training set. Even the most powerful models have a "knowledge cutoff"—they don't know what happened yesterday, and they certainly don't know your company's private data.</p>
+                <p>Think of an LLM as a brilliant student taking an exam. Without RAG, it's an "opened book" test where the student only relies on memory. With RAG, it's an "open book" test where the student can look up facts in a library before answering.</p>
+            </div>
+            <div class="intro-col">
+                <h3 style="font-weight: 700;">Why it matters for agents</h3>
+                <p>RAG is a critical "environmental awareness" tool. It allows agents to:</p>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px;">
+                    <li><strong>• Reduce hallucinations:</strong> Grounding responses in actual documents.</li>
+                    <li><strong>• Provide up-to-date info:</strong> Accessing real-time news or databases.</li>
+                    <li><strong>• Handle private context:</strong> Reasoning over your specific emails, docs, or code.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- RAG Diagram -->
+        <div style="background: #F8F9FA; border-radius: 30px; padding: 40px; margin-top: 40px; border: 1px solid #E8EAED; position: relative; text-align: center;">
+            <div style="display: flex; justify-content: space-around; align-items: center; position: relative;">
+                <div style="background: white; padding: 15px; border-radius: 12px; border: 2px solid var(--google-blue); width: 140px;">
+                    <div style="font-size: 24px; margin-bottom: 5px;">🔍</div>
+                    <div style="font-weight: 700; font-size: 14px;">Retrieve</div>
+                    <div style="font-size: 11px; color: #5F6368;">Search Vector DB</div>
+                </div>
+                <div style="font-size: 24px; color: #BDC1C6;">➟</div>
+                <div style="background: white; padding: 15px; border-radius: 12px; border: 2px solid var(--google-red); width: 140px;">
+                    <div style="font-size: 24px; margin-bottom: 5px;">📝</div>
+                    <div style="font-weight: 700; font-size: 14px;">Augment</div>
+                    <div style="font-size: 11px; color: #5F6368;">Add context to prompt</div>
+                </div>
+                <div style="font-size: 24px; color: #BDC1C6;">➟</div>
+                <div style="background: white; padding: 15px; border-radius: 12px; border: 2px solid var(--google-green); width: 140px;">
+                    <div style="font-size: 24px; margin-bottom: 5px;">💡</div>
+                    <div style="font-weight: 700; font-size: 14px;">Generate</div>
+                    <div style="font-size: 11px; color: #5F6368;">Grounded Answer</div>
+                </div>
+            </div>
+            <p style="margin-top: 30px; font-size: 14px; color: #5F6368; font-style: italic;">In an agentic loop, RAG is often triggered as a "Tool Use" step when the model realizes it lacks specific information.</p>
+        </div>
+
+        <footer class="page-footer">
+            <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
+            <div class="page-number">15</div>
+        </footer>
+    </div>
+
+
+    <!-- PAGE 16: Module 3 Problem Intro -->
+    <div class="page" id="page-16">
         <header class="page-header">
             <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
             <div class="skills-text">Skills</div>
@@ -740,12 +794,12 @@
         </div>
         <footer class="page-footer">
             <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
-            <div class="page-number">15</div>
+            <div class="page-number">16</div>
         </footer>
     </div>
 
-    <!-- PAGE 16: Module 3 When NOT to use agents -->
-    <div class="page" id="page-16">
+    <!-- PAGE 17: Module 3 When NOT to use agents -->
+    <div class="page" id="page-17">
         <header class="page-header">
             <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
             <div class="skills-text">Skills</div>
@@ -768,12 +822,12 @@
         <p style="margin-top: 40px; font-size: 18px; color: #5F6368; font-style: italic;">"Just because you <u>can</u> use an agent doesn't mean you <u>should</u>."</p>
         <footer class="page-footer">
             <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
-            <div class="page-number">16</div>
+            <div class="page-number">17</div>
         </footer>
     </div>
 
-    <!-- PAGE 17: Module 3 Solution Intro -->
-    <div class="page" id="page-17">
+    <!-- PAGE 18: Module 3 Solution Intro -->
+    <div class="page" id="page-18">
         <header class="page-header">
             <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
             <div class="skills-text">Skills</div>
@@ -788,12 +842,12 @@
         </div>
         <footer class="page-footer">
             <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
-            <div class="page-number">17</div>
+            <div class="page-number">18</div>
         </footer>
     </div>
 
-    <!-- PAGE 18: Module 3 Decision Flowchart -->
-    <div class="page" id="page-18">
+    <!-- PAGE 19: Module 3 Decision Flowchart -->
+    <div class="page" id="page-19">
         <header class="page-header">
             <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
             <div class="skills-text">Skills</div>
@@ -819,12 +873,12 @@
         <p style="margin-top: 30px; color: #5F6368; text-align: center; font-style: italic;">Figure: A simple flowchart to determine if your task requires an agentic architecture.</p>
         <footer class="page-footer">
             <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
-            <div class="page-number">18</div>
+            <div class="page-number">19</div>
         </footer>
     </div>
 
-    <!-- PAGE 19: Module 3 Implementation Advice -->
-    <div class="page" id="page-19">
+    <!-- PAGE 20: Module 3 Implementation Advice -->
+    <div class="page" id="page-20">
         <header class="page-header">
             <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
             <div class="skills-text">Skills</div>
@@ -850,12 +904,12 @@
         </div>
         <footer class="page-footer">
             <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
-            <div class="page-number">19</div>
+            <div class="page-number">20</div>
         </footer>
     </div>
 
-    <!-- PAGE 20: Module 3 Summary -->
-    <div class="page" id="page-20">
+    <!-- PAGE 21: Module 3 Summary -->
+    <div class="page" id="page-21">
         <header class="page-header">
             <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
             <div class="skills-text">Skills</div>
@@ -869,13 +923,13 @@
         </div>
         <footer class="page-footer">
             <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
-            <div class="page-number">20</div>
+            <div class="page-number">21</div>
         </footer>
     </div>
 
 
-    <!-- PAGE 21: Conclusion Part 1 - Accomplishments -->
-    <div class="page" id="page-21">
+    <!-- PAGE 22: Conclusion Part 1 - Accomplishments -->
+    <div class="page" id="page-22">
         <header class="page-header">
             <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
             <div class="skills-text">Skills</div>
@@ -941,12 +995,12 @@
         
         <footer class="page-footer">
             <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
-            <div class="page-number">21</div>
+            <div class="page-number">22</div>
         </footer>
     </div>
 
-    <!-- PAGE 22: Conclusion Part 2 - Takeaways -->
-    <div class="page" id="page-22">
+    <!-- PAGE 23: Conclusion Part 2 - Takeaways -->
+    <div class="page" id="page-23">
         <header class="page-header">
             <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
             <div class="skills-text">Skills</div>
@@ -998,12 +1052,12 @@
         </div>
         <footer class="page-footer">
             <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
-            <div class="page-number">22</div>
+            <div class="page-number">23</div>
         </footer>
     </div>
 
-    <!-- PAGE 23: Reading List -->
-    <div class="page" id="page-23">
+    <!-- PAGE 24: Reading List -->
+    <div class="page" id="page-24">
         <header class="page-header">
             <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
             <div class="skills-text">Skills</div>
@@ -1043,6 +1097,11 @@
                        <div style="font-weight: 700; margin-bottom: 8px; color: var(--google-red);">What is Agentic AI – Part 2</div>
                        <p style="font-size: 13px; color: #5F6368; margin-bottom: 0;">Continuing the deep dive into advanced agentic architectures and real-world results.</p>
                    </a>
+                   <!-- New RAG Resource -->
+                   <a href="https://cloud.google.com/vertex-ai/docs/generative-ai/rag-overview" target="_blank" style="text-decoration: none; color: inherit; display: block; background: #f8f9fa; border-radius: 12px; padding: 20px; border: 1px dashed var(--google-blue); margin-top: 20px;">
+                       <div style="font-weight: 700; margin-bottom: 8px; color: var(--google-blue);">Architecting RAG with Vertex AI</div>
+                       <p style="font-size: 13px; color: #5F6368; margin-bottom: 0;">Google's official guide to implementing retrieval-augmented services.</p>
+                   </a>
                </div>
                
                <div style="margin-top: 40px; background: #E8F0FE; border-radius: 20px; padding: 30px; border: 1px dashed var(--google-blue);">
@@ -1054,12 +1113,12 @@
 
         <footer class="page-footer">
             <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
-            <div class="page-number">23</div>
+            <div class="page-number">24</div>
         </footer>
     </div>
 
-    <!-- PAGE 24: Final words & Quick Reference Card -->
-    <div class="page" id="page-24">
+    <!-- PAGE 25: Final words & Quick Reference Card -->
+    <div class="page" id="page-25">
         <header class="page-header">
             <div class="google-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
             <div class="skills-text">Skills</div>
@@ -1118,7 +1177,7 @@
         </div>
         <footer class="page-footer">
             <div class="google-logo" style="font-size: 18px;"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> <span style="color: #5F6368; font-weight: 500;">Skills</span></div>
-            <div class="page-number">24</div>
+            <div class="page-number">25</div>
         </footer>
     </div>
 
